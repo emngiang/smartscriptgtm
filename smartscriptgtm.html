@@ -20,7 +20,7 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PJQ75JSF" height="0" width="0"
             style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <h1>Welcome to Emma Giang Test Site</h1>
+    <h1>Welcome to Test Site</h1>
     <p>This is a simple HTML page to test Cross-platform SmartScript using GTM.</p>
 
     <!-- Button to be dynamically updated with the URL -->
@@ -28,15 +28,10 @@
 
     <!-- Script to update the button with the URL -->
     <script>
-        var urlsByPlatform = {
-            // Populate this object based on your platforms data
-            // Example: 'steam': 'http://example.com'
-        };
-
         window.onload = function () {
             var button = document.getElementById('dynamicLinkButton');
-            var platformKey = 'steam'; // Replace with your specific platform key
-            var url = urlsByPlatform[platformKey];
+            var platformKey = 'steam'; // Use the same key used in your GTM script
+            var url = window[platformKey + "Result"];
 
             if (url && url !== "No output from script") {
                 button.onclick = function () {
