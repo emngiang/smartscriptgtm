@@ -33,8 +33,10 @@
         function openStoreLink(store) {
             if (store === 'steam' && window.AF_STEAM_CLICK_URL) {
                 window.open(window.AF_STEAM_CLICK_URL, '_blank');
+                console.log(window.AF_STEAM_CLICK_URL);
             } else if (store === 'epic' && window.AF_EPIC_CLICK_URL) {
                 window.open(window.AF_EPIC_CLICK_URL, '_blank');
+                console.log(window.AF_EPIC_CLICK_URL);
             } else {
                 alert('The store link is not available yet. Please try again later.');
             }
