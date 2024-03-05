@@ -43,12 +43,11 @@
         }
 
         // Periodically check if the GTM script has set the URLs
-        var checkExist = setInterval(function () {
+        var checkExist = setTimeout(function () {
             if (window.steamResult && window.epicResult) {
                 updateLinks();
-                clearInterval(checkExist);
             }
-        }, 100); // check every 100ms
+        }, 1000); // check every 100ms
     </script>
 </body>
 
