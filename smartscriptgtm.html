@@ -23,28 +23,22 @@
     <h1>Welcome to Test Site</h1>
     <p>This is a simple HTML page to test Cross-platform SmartScript using GTM.</p>
 
-    <!-- Link to be dynamically updated with the URL -->
-    <a id="dynamicLinkButton" href="#"
-        style="padding: 10px; background-color: #4CAF50; color: white; text-decoration: none;">Click Me</a>
+    <!-- Buttons for Steam and Epic links -->
+    <a id="steamLink" href="#">Download on Steam</a>
+    <a id="epicLink" href="#">Download on Epic</a>
 
-    <!-- Script to update the link with the URL -->
     <script>
         window.onload = function () {
-            var link = document.getElementById('dynamicLinkButton');
-            var platformKey = 'steam'; // Use the same key used in your GTM script
-            var url = window[platformKey + "Result"];
+            // Update the href for the Steam link
+            var steamLink = document.getElementById('steamLink');
+            if (steamLink && window.steamResult) {
+                steamLink.href = window.steamResult;
+            }
 
-            if (url && url !== "No output from script") {
-                link.href = url;
-                link.onclick = function () {
-                    window.location.href = url;
-                    return false; // Prevent default action
-                };
-            } else {
-                // Handle the case where the URL is not available
-                console.error("URL for the platform is not available");
-                link.href = "#";
-                link.onclick = function () { return false; }; // Prevent navigation for empty links
+            // Update the href for the Epic link
+            var epicLink = document.getElementById('epicLink');
+            if (epicLink && window.epicResult) {
+                epicLink.href = window.epicResult;
             }
         };
     </script>
