@@ -22,6 +22,32 @@
     <!-- End Google Tag Manager (noscript) -->
     <h1>Welcome to Emma Giang Test Site</h1>
     <p>This is a simple HTML page to test Cross-platform SmartScript using GTM.</p>
+
+    <!-- Button to be dynamically updated with the URL -->
+    <button id="dynamicLinkButton">Click Me</button>
+
+    <!-- Script to update the button with the URL -->
+    <script>
+        var urlsByPlatform = {
+            // Populate this object based on your platforms data
+            // Example: 'steam': 'http://example.com'
+        };
+
+        window.onload = function () {
+            var button = document.getElementById('dynamicLinkButton');
+            var platformKey = 'steam'; // Replace with your specific platform key
+            var url = urlsByPlatform[platformKey];
+
+            if (url && url !== "No output from script") {
+                button.onclick = function () {
+                    window.location.href = url;
+                };
+            } else {
+                // Handle the case where the URL is not available
+                console.error("URL for the platform is not available");
+            }
+        };
+    </script>
 </body>
 
 </html>
