@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Test Cross-platform SmartScript GTM Site</title>
     <!-- Google Tag Manager -->
     <script>(function (w, d, s, l, i) {
             w[l] = w[l] || []; w[l].push({
@@ -13,6 +12,8 @@
                     'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
         })(window, document, 'script', 'dataLayer', 'GTM-PJQ75JSF');</script>
     <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <title>Game Store Links</title>
 </head>
 
 <body>
@@ -20,34 +21,24 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PJQ75JSF" height="0" width="0"
             style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <h1>Welcome to Test Site</h1>
-    <p>This is a simple HTML page to test Cross-platform SmartScript using GTM.</p>
+    <h1>Welcome to Our Game</h1>
+    <p>Choose your platform to continue:</p>
 
-    <!-- Buttons for Steam and Epic links -->
-    <a id="steamLink" href="#">Download on Steam</a>
-    <a id="epicLink" href="#">Download on Epic</a>
+    <!-- Buttons for Steam and Epic -->
+    <button id="steamButton" onclick="openStoreLink('steam')">Get it on Steam</button>
+    <button id="epicButton" onclick="openStoreLink('epic')">Get it on Epic Games Store</button>
 
     <script>
-        // Function to update the links
-        function updateLinks() {
-            var steamLink = document.getElementById('steamLink');
-            var epicLink = document.getElementById('epicLink');
-
-            if (window.steamResult && steamLink) {
-                steamLink.href = window.steamResult;
-            }
-
-            if (window.epicResult && epicLink) {
-                epicLink.href = window.epicResult;
+        // Function to open the store link
+        function openStoreLink(store) {
+            if (store === 'steam' && window.AF_STEAM_CLICK_URL) {
+                window.open(window.AF_STEAM_CLICK_URL, '_blank');
+            } else if (store === 'epic' && window.AF_EPIC_CLICK_URL) {
+                window.open(window.AF_EPIC_CLICK_URL, '_blank');
+            } else {
+                alert('The store link is not available yet. Please try again later.');
             }
         }
-
-        // Periodically check if the GTM script has set the URLs
-        var checkExist = setTimeout(function () {
-            if (window.steamResult && window.epicResult) {
-                updateLinks();
-            }
-        }, 1000); // check every 100ms
     </script>
 </body>
 
