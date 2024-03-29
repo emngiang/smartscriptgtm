@@ -22,23 +22,30 @@
     <p>Choose your platform to continue:</p>
 
     <!-- Links for Steam and Epic -->
-    <a href="#" id="steamLink" target="_blank">Get it on Steam</a>
-    <a href="#" id="epicLink" target="_blank">Get it on Epic Games Store</a>
+    <a href="#" id="steam_link" target="_blank">Get it on Steam</a>
+    <a href="#" id="epic_link" target="_blank">Get it on Epic Games Store</a>
+    <div id="output_url"></div>
 
     <script>
-        // Assuming AF_STEAM_CLICK_URL and AF_EPIC_CLICK_URL are set elsewhere
-        document.getElementById('steamLink').href = window.AF_STEAM_CLICK_URL || '#';
-        document.getElementById('epicLink').href = window.AF_EPIC_CLICK_URL || '#';
+        let results = {
+            steam: { clickURL: window.AF_STEAM_CLICK_URL },
+            epic: { clickURL: window.AF_EPIC_CLICK_URL }
+        };
 
-        // Optional: Handle the case when URLs are not available
-        document.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', function (event) {
-                if (this.href === '#') {
-                    alert('The store link is not available yet. Please try again later.');
-                    event.preventDefault(); // Prevent default action (navigation) if URL is not set
+        for (let platformKey in results) {
+            let result = results[platformKey];
+            if (result) {
+                let result_url = result.clickURL;
+                // update the href attribute for each store banner
+                let linkElement = document.getElementById(platformKey + "_link");
+                if (linkElement) {
+                    linkElement.setAttribute("href", result_url);
                 }
-            });
-        });
+
+                // add the url to the output list of links
+                document.getElementById("output_url").innerHTML += `<b>${platformKey}</b> -> ${result_url} <br/><br/>`;
+            }
+        }
     </script>
 </body>
 
