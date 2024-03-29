@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Simple Website To Test SmartScript with GTM</title>
+    <style>
+        .button {
+            padding: 10px 20px;
+            text-align: center;
+            margin: 10px;
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
+            background-color: #e7f4e8;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        .button:hover {
+            background-color: #343087;
+        }
+    </style>
+</head>
+
+<body>
+    <a id="steam" class="button" href="#" onmouseover="generateLink('steam')">Download on STEAM</a>
+    <a id="epic" class="button" href="#" onmouseover="generateLink('epic')">Download on EPIC</a>
+
+    <script>
+        function generateLink(buttonId) {
+            if (buttonId == 'steam') {
+                document.getElementById('steam').href = window.AF_STEAM_CLICK_URL;
+            }
+            else if (buttonId == 'epic') {
+                document.getElementById('epic').href = window.AF_EPIC_CLICK_URL;
+            }
+            else {
+                console.log("There is not an available link");
+            }
+            console.log("Generate link for button: " + buttonId);
+        }
+    </script>
+</body>
+
+</html>
