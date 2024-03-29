@@ -4,12 +4,9 @@
 <head>
     <!-- Google Tag Manager -->
     <script>(function (w, d, s, l, i) {
-            w[l] = w[l] || []; w[l].push({
-                'gtm.start':
-                    new Date().getTime(), event: 'gtm.js'
-            }); var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+            w[l] = w[l] || []; w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+            var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true; j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
         })(window, document, 'script', 'dataLayer', 'GTM-PJQ75JSF');</script>
     <!-- End Google Tag Manager -->
     <meta charset="UTF-8">
@@ -24,26 +21,24 @@
     <h1>Welcome to Our Game</h1>
     <p>Choose your platform to continue:</p>
 
-    <!-- Buttons for Steam and Epic -->
-    <a href="javascript:void(0);" id="steamLink" onclick="openStoreLink('steam')">Get it on Steam</a>
-    <a href="javascript:void(0);" id="epicLink" onclick="openStoreLink('epic')">Get it on Epic Games Store</a>
+    <!-- Links for Steam and Epic -->
+    <a href="#" id="steamLink" target="_blank">Get it on Steam</a>
+    <a href="#" id="epicLink" target="_blank">Get it on Epic Games Store</a>
 
     <script>
-        // Function to open the store link
-        function openStoreLink(store) {
-            var url = '';
-            if (store === 'steam') {
-                url = window.AF_STEAM_CLICK_URL;
-            } else if (store === 'epic') {
-                url = window.AF_EPIC_CLICK_URL;
-            }
+        // Assuming AF_STEAM_CLICK_URL and AF_EPIC_CLICK_URL are set elsewhere
+        document.getElementById('steamLink').href = window.AF_STEAM_CLICK_URL || '#';
+        document.getElementById('epicLink').href = window.AF_EPIC_CLICK_URL || '#';
 
-            if (url) {
-                window.open(url, '_blank');
-            } else {
-                alert('The store link is not available yet. Please try again later.');
-            }
-        }
+        // Optional: Handle the case when URLs are not available
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function (event) {
+                if (this.href === '#') {
+                    alert('The store link is not available yet. Please try again later.');
+                    event.preventDefault(); // Prevent default action (navigation) if URL is not set
+                }
+            });
+        });
     </script>
 </body>
 
