@@ -44,14 +44,15 @@
         function generateLink(buttonId) {
             if (buttonId == 'steam') {
                 document.getElementById('steam').href = window.AF_STEAM_CLICK_URL;
+                console.log("steam link:" + window.AF_STEAM_CLICK_URL)
             }
             else if (buttonId == 'epic') {
                 document.getElementById('epic').href = window.AF_EPIC_CLICK_URL;
+                console.log("epic link:" + window.AF_EPIC_CLICK_URL)
             }
             else {
                 console.log("There is not an available link");
             }
-            console.log("Generate link for button: " + buttonId);
         }
     </script>
 </body>
