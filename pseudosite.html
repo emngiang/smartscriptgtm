@@ -43,12 +43,12 @@
     <script>
         function generateLink(buttonId) {
             if (buttonId == 'steam') {
-                document.getElementById('steam').href = AF_SMART_SCRIPT_RESULT.clickURL;
-                console.log("steam link:" + AF_SMART_SCRIPT_RESULT.clickURL)
+                document.getElementById('steam').href = window.AF_STEAM_CLICK_URL;
+                console.log("steam URL:" + AF_STEAM_CLICK_URL.clickURL)
             }
             else if (buttonId == 'epic') {
                 document.getElementById('epic').href = window.AF_EPIC_CLICK_URL;
-                console.log("epic link:" + window.AF_EPIC_CLICK_URL)
+                console.log("epic URL:" + AF_STEAM_CLICK_URL.clickURL)
             }
             else {
                 console.log("There is not an available link");
